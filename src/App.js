@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+import { Animator, ScrollContainer, ScrollPage, Sticky, Fade, MoveOut, MoveIn, batch} from 'react-scroll-motion';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ScrollContainer>
+      <ScrollPage page={0}>
+        <Animator animation={batch(Sticky(), Fade(), MoveOut(0,-200))}>
+          <div className="card"><p className="card-text">Scroll down! 🙂</p></div>
+        </Animator>
+      </ScrollPage>
+
+      <ScrollPage page={1}>
+        <Animator animation={batch(Sticky(), Fade(), MoveIn(0, 200), MoveOut(0,-200))}>
+          <div className="card"><p className="card-text">Good! Keep going.</p></div>
+        </Animator>
+      </ScrollPage>
+
+      <ScrollPage page={2}>
+        <Animator animation={batch(Sticky(), Fade(), MoveIn(0, 200), MoveOut(0,-200))}>
+          <div className="card"><p className="card-text">Almost there</p></div>
+        </Animator>
+      </ScrollPage>
+
+      <ScrollPage page={3}>
+        <Animator animation={batch(Sticky(), Fade(), MoveIn(0, 200), MoveOut(0,-200))}>
+          <div className="card"><p className="card-text">Done🤓 Now scroll up</p></div>
+        </Animator>
+      </ScrollPage>
+    </ScrollContainer>
   );
 }
 
